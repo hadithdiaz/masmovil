@@ -1,0 +1,29 @@
+{% extends "list.html" %}
+
+
+{% block content %}
+
+
+   <div class="card bg-light mb-3" style="max-width: 25rem;">
+      <div class="card-header"><h1 class="title">Agregar Cliente</h1></div>
+
+      <div class="card-body">
+
+
+         <form action="" method="POST">
+
+            {% csrf_token %}
+
+            {{form.as_p}}
+
+            
+            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Guardar">
+
+
+         </form>  
+		</div>    
+	</div>
+
+   {{ mensaje }}
+
+{% endblock %}

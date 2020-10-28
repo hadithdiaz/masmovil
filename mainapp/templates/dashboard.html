@@ -1,0 +1,103 @@
+{%  extends 'body.html' %}
+
+{% block content %}
+
+    {% include 'status.html' %}
+
+    <br>
+    <hr>
+    <div class="row">
+	    <div class="col-md-5">
+		    <h5>CLIENTES :</h5>
+		    
+		    <div class="card card-body">
+			    <a class="btn btn-primary  btn-sm btn-block" href="{% url 'crear_cliente' %}">
+			    <i class="fas fa-plus"></i> Agregar Cliente</a>
+			    <table class="table table-dark table table-sm">
+				    <tr>
+					    <th></th>
+					    <th>Nombre</th>
+					    <th>Celular</th>
+				    </tr>
+
+				    {% for cliente in clientes %}
+					    <tr>
+						    <td><a class="btn btn-outline-info" href="{% url 'cliente' cliente.id %}">Ver</a></td>
+						    <td>{{cliente.nombre}}</td>
+						    <td>{{cliente.celular}}</td>
+					    </tr>
+				    {% endfor %}
+
+			    </table>
+			</div>
+		</div>
+
+	    <div class="col-md-7">
+		    <h5>ORDENES :</h5>
+		    
+		    <div class="card card-body">
+
+		        <a class="btn btn-primary  btn-sm btn-block" href="{% url 'crear_orden' %}">
+			    <i class="fas fa-plus"></i> Agregar Orden</a>	
+
+			    <table class="table table-sm">
+				    <tr>
+					    <th>Id</th>
+					    <th>Modelo</th>
+					    <th>Estado</th>
+					    <th>Salida</th>
+					    <th>Ver</th>
+				    </tr>
+
+				    {% for orden in ordenes %}
+					    <tr>
+						    <td>{{orden.id}}</td>
+						    <td>{{orden.modelo}}</td>
+
+						    <td>
+
+                                {% if orden.estado == "Recibido" %}
+			                        <a href="{% url 'estado' orden.id %}" class="badge badge-primary">Recibido</a>		
+                                    <P>
+
+                                    {% elif orden.estado == "En reparación" %}
+                                    <a href="{% url 'estado' orden.id %}" class="badge badge-danger">En reparación</a>
+                                    <P>
+
+		                            {% elif orden.estado == "Reparado" %}
+                                    <a href="{% url 'estado' orden.id %}" class="badge badge-warning">Reparado</a>
+                                    <P>
+
+                                    {% elif orden.estado == "No Reparado" %}
+                                    <a href="{% url 'estado' orden.id %}" class="badge badge-dark">No reparado</a>
+                                    <P>
+
+                                    {% elif orden.estado == "Entregado" %}
+                                    <a href="{% url 'estado' orden.id %}" class="badge badge-success">Entregado</a>
+                                    <P>
+
+                                    {% elif orden.estado == "Garantía" %}
+                                    <a href="{% url 'estado' orden.id %}" class="badge badge-secondary">Garantia</a>
+                                    <P>
+
+                                {% endif %}
+        
+                            </td>
+
+						    <td><a class="btn btn-outline-dark" href="{% url 'salida' orden.id %}">Salida</a></td>
+						    <td><a class="btn btn-outline-info" href="{% url 'orden' orden.id %}">Ver</a></td>
+
+					    </tr>
+
+				    {% endfor %}
+		
+			    </table>
+
+		    </div>
+
+	    </div>
+
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,40 @@
+{% extends 'list.html' %}
+
+
+
+{% block nombre %}  
+
+    <h1> <small>Nombre:</small> <class="m-0 text-dark"> {{cliente.nombre}} </h1>
+
+{% endblock %}
+
+{% block icon %}
+<i class="fas fa-user"></i>
+{% endblock %}
+
+{% block add_cliente %}
+
+    <a href="{% url 'editar' cliente.id %}"  class="btn btn-outline-info btn-sm">
+        <i class="fas fa-user-edit"></i> Editar Cliente
+    </a>
+                
+{% endblock%}
+
+
+
+{% block rows %}
+
+    <tr>
+        <p><b><i> Id: </i></b>{{ cliente.id }}</p>
+        <p><b><i> Celular: </i></b>{{ cliente.celular }}</p>
+        <p><b><i> WhatsApp: </i></b>{{ cliente.whatsapp }}</p>
+        <p><b><i> Dirección: </i></b>{{ cliente.direccion}}</p>
+        <p><b><i> Correo: </i></b>{{ cliente.correo }}</p>
+        <p><b><i> Genero: </i></b>{{ cliente.genero }}</p>
+        <p><b><i> Status: </i></b>{{ cliente.status }}</p>
+    </tr>
+
+{% endblock %}
+
+
+

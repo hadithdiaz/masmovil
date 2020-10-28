@@ -1,0 +1,66 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %} Busqueda {% endblock %}
+
+{% block content %} 
+
+{% load static %}
+<link rel="icon" type="favicon/x-icon" href="static/images/logo+.png"/>
+<link rel="stylesheet" type= "text/css" href="{% static "css/tabla.css"  %}" />
+<h1 class="title">Ordenes encontradas</h1>
+
+{% if messages %}
+  {%for message in messages %}
+    <div class="message">
+      {{message}}
+    </div>
+  {% endfor%}
+{% endif %}
+
+
+
+
+
+{% block body %}
+
+
+  
+
+
+  </br>
+  </br>
+  <div id="tabla-cliente">
+
+    <table>
+      <thead>
+        <tr>
+        <th>ID</th>
+         <th> CLIENTE  </th>
+        <th> IMEI  </th> 
+        <th> MARCA  </th> 
+        <th> MODELO </th> 
+        <th> FALLA </th> 
+        <th> </th> 
+        </tr>
+      </thead>
+
+          {% for orden in ordenes %}
+            <tr>
+               <td>{{orden.id}}</td>
+               <td>{{orden.cliente.first_name}}</td>
+               <td>{{orden.imei}}</td> 
+               <td>{{orden.marca}}</td>
+               <td>{{orden.modelo}}</td>
+               <td>{{orden.falla}}</td>
+            <td>
+                <a href="{% url 'editar_orden' orden.id %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Editar</a>
+              </td>
+
+            </tr>
+          {%endfor%}
+
+      
+   </table>
+    
+  {% endblock %}
+{% endblock %}

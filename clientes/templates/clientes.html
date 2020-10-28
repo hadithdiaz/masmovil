@@ -1,0 +1,52 @@
+{% extends 'list.html' %}
+
+
+
+{% block icon %}
+<i class="fas fa-users"></i>
+{% endblock %}
+
+
+
+{% block add_cliente %}
+<a href="{% url 'crear_cliente' %}"  class="btn btn-outline-info btn-sm">
+    <i class="fas fa-plus"></i> Agregar Cliente
+</a>
+   {% endblock%}
+
+
+
+
+{% block columns %}
+    <tr>
+        
+        <th scope="col" style="width: 30%;">Nombre</th>
+        <th scope="col" style="width: 30%;">Celular</th>
+        <th scope="col" style="width: 30%;">WhatsApp</th>
+        <th></th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+    {% for cliente in clientes %}
+        <tr>
+          
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.celular }}</td>
+            <td>{{ cliente.whatsapp }}</td>
+            
+            <td>
+                <a class="btn btn-outline-info" href="{% url 'cliente' cliente.id %}">Ver</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block agregar %}
+        <div class="card-footer">
+            <a href="{% url 'crear_cliente' %}"  class="btn btn-outline-info btn-sm">
+                <i class="fas fa-plus"></i> Agregar Cliente
+            </a>
+        </div>
+
+{% endblock %}

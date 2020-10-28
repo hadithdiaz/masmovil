@@ -1,0 +1,25 @@
+{% extends "layouts/layout.html" %}
+
+
+{% block title %} Editar Cliente {% endblock %}
+
+{% block content %}
+<link rel="icon" type="favicon/x-icon" href="static/images/logo+.png"/>
+<h1 class="title">Editar Cliente</h1>
+
+<form action="" method="POST">
+
+   {% csrf_token %}
+
+   {{form.as_p}}
+
+ 
+
+   <input type="submit" value="Editar"/>
+
+
+</form>  
+
+{{ mensaje }}
+
+{% endblock %}

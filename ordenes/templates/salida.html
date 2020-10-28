@@ -1,0 +1,25 @@
+{% extends "layouts/layout.html" %}
+
+
+{% block title %} Salida{% endblock %}
+
+{% block content %}
+<link rel="icon" type="favicon/x-icon" href="static/images/logo+.png"/>
+<h1 class="title">Salida: {{orden.cliente.nombre}}</h1>
+
+<form action="" method="POST">
+
+   {% csrf_token %}
+
+   {{form.as_p}}
+
+ 
+
+   <input type="submit" value="Guardar"/>
+
+
+</form>  
+
+{{ mensaje }}
+
+{% endblock %}

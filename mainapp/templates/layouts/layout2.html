@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+     <title>mas movil 
+        {% block title %}
+        
+        {% endblock %}
+      | Servicio técnico
+     </title>
+    
+    {% load static %}
+    <link rel="icon" type="favicon/x-icon" href="static/images/logo+.png"/>
+    <link rel="stylesheet" type= "text/css" href="{% static "css/table.css"  %}" />
+    
+    
+</head>
+
+<body>
+
+
+    <header id="header">
+
+      <div class="wrap"> 
+        <div id="logotipo">            
+          <img src="{% static "images/logo1.png"%}"/>
+          <h1> Servicio Técnico</h1>
+        </div>
+      </div>
+            
+  </header>
+
+    <nav id="menu">
+      <ul>
+        <li>
+          <a href="{% url "index" %}">Inicio</a>
+        </li>
+
+        {% if user.email %}
+
+          <li>
+            <a href="{% url "clientes" %}">Clientes</a>
+            <!-- 
+            <ul>
+              <li>
+                <a href="{% url "clientes" %}">Clientes</a>
+              </li>
+            </ul>
+            -->
+            <li>
+              <a href="{% url "ordenes" %}">Orden de Servicio</a>
+              <!-- 
+              <ul>
+                <li>
+                  <a href="{% url "crear_orden" %}">Lista de Orden</a>
+                </li>
+              </ul>
+              -->
+            </li>
+          </li>
+
+         <li>
+            <a href="{% url "index" %}">Categorias</a>
+            <ul>
+              
+            </ul>
+          </li>
+
+          
+
+          <li>
+            <a href="{% url "logout" %}">Cerrar sesión</a>
+          </li>
+          <li>
+            <a href="{% url "register" %}">Registro</a>
+          </li>
+
+          {% else %}
+
+            
+
+          <li>
+            <a href="{% url "login" %}">Identificate</a>
+          </li>
+        {% endif %}
+
+
+      </ul>
+            
+    </nav>
+
+              <!-- 
+    <div class= barra>
+      <span class= "esquina-izquierda"></span>
+      <span class= "relleno-barra"></span>
+      <span class= "esquina-derecha"></span>
+    </div>
+    -->
+
+
+
+
+    <div id= "content">
+      <div class= "box">
+        {% block content %}  
+
+
+        {% endblock %}
+      </div>
+    </div>
+
+
+
+    <div class="clearfix"></div>
+
+    <footer id="footer">
+          <div class="wrap">
+
+              <div id="location">
+                
+              </div>
+              <div id="info">
+                
+                <p>Más Móvil Repair &copy; Hadith Díaz - {% now "d/m/y" %} </p>
+              </div>
+          </div>
+    </footer>
+  </body>
+
+</html>

@@ -1,0 +1,33 @@
+{% extends "list.html" %}
+
+{% block nombre %}  
+<h1> <small>Orden de Servicio Numero:</small> <class="m-0 text-dark"> {{orden.id}} </h1>
+{% endblock %}
+
+
+{% block content %}
+
+
+   <div class="card bg-light mb-3" style="max-width: 25rem;">
+      <div class="card-header"><h4 class="title">Reparación</h4></div>
+
+      <div class="card-body">
+
+
+         <form action="" method="POST">
+
+            {% csrf_token %}
+
+            {{form.as_p}}
+
+            
+            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Guardar">
+
+
+         </form>  
+		</div>    
+	</div>
+
+   {{ mensaje }}
+
+{% endblock %}

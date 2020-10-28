@@ -1,0 +1,54 @@
+{% extends "list.html" %}
+
+
+
+
+{% block icon %}
+<i class="fas fa-chart-line"></i> 
+
+<h5>Total:</h5>
+        <h2> $/ {{ total_cobrar }} </h2>
+        
+{% endblock %}
+
+<br>
+
+
+
+    {% block columns %}
+    <tr>
+        <th scope="col" style="width: 10%;">Id</th>
+        <th scope="col" style="width: 20%;">Fecha de Entrega</th>
+        <th scope="col" style="width: 15%;">Gasto $</th>
+        <th scope="col" style="width: 15%;">Cobro $</th>
+        <th scope="col" style="width: 20%;">TOTAL $</th>       
+        <th scope="col" style="width: 20%;">Medio de pago</th>
+        
+        <th></th>
+    </tr>
+    {% endblock %}
+
+    {% block rows %}
+    {% for orden in ordenes %}
+
+    {% if orden.estado == "Entregado" %}
+        <tr>
+            <td>{{ orden.id }}       </td>
+            <td>{{ orden.fecha_out }}</td>
+            <td>{{ orden.gasto}}     </td>
+            <td>{{ orden.cobro }}    </td>
+            <td>{{ orden.total }}    </td>
+            <td>{{ orden.medio_pago }}    </td>
+            <td>
+                <a class="btn btn-outline-info" href="{% url 'orden' orden.id %}">Ver</a>
+            </td>
+        </tr>
+
+        {% endif %}
+    {% endfor %}
+    {% endblock %}
+
+
+
+
+

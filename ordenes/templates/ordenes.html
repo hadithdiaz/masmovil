@@ -1,0 +1,84 @@
+{% extends 'list.html' %}
+
+
+{% block icon %}
+    <i class="fas fa-book-medical"></i> Lista de Ordenes
+{% endblock %}
+
+
+{% block add_orden%}
+    <a href="{% url 'crear_orden' %}"  class="btn btn-outline-info btn-sm">
+        <i class="fas fa-plus"></i> Agregar Orden
+    </a>
+{% endblock %}
+
+
+{% block columns %}
+    <tr>
+        
+        <th scope="col" style="width: 30%;">Cliente</th>
+        <th scope="col" style="width: 30%;">Imei</th>
+        <th scope="col" style="width: 30%;">Fecha de Ingreso</th>
+        <th scope="col" style="width: 10%;">Estado</th>
+    
+        <th></th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+    {% for orden in object_list %}
+        <tr>
+            
+            <td>{{ orden.cliente.nombre }}
+                <p><b><i>Celular: </i></b>{{ orden.cliente.celular }}</p>
+            </td>
+            <td>{{ orden.imei }}</td>
+            <td>{{ orden.created_at }}</td>
+            <td>
+
+                {% if orden.estado == "Recibido" %}
+			    <a href="{% url 'estado' orden.id %}" class="badge badge-primary">Recibido</a>
+                <P>
+
+	            {% elif orden.estado == "En reparación" %}	
+                <a href="{% url 'estado' orden.id %}" class="badge badge-danger">En reparación</a>		
+                <P>
+
+                {% elif orden.estado == "Reparado" %}
+                <a href="{% url 'estado' orden.id %}" class="badge badge-warning">Reparado</a>
+                <P>
+
+                {% elif orden.estado == "No Reparado" %}
+                <a href="{% url 'estado' orden.id %}" class="badge badge-dark">No reparado</a>
+                <P>
+
+                {% elif orden.estado == "Entregado" %}
+                <a href="{% url 'estado' orden.id %}" class="badge badge-success">Entregado</a>
+                <P>
+
+                {% elif orden.estado == "Garantía" %}
+                <a href="{% url 'estado' orden.id %}" class="badge badge-secondary">Garantia</a>
+                <P>
+
+                {% endif %}
+        
+            </td>
+            
+            <td>
+                <a class="btn btn-outline-info" href="{% url 'orden' orden.id %}">Ver</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+{% block agregar %}
+        <div class="card-footer">
+            <a href="{% url 'crear_orden' %}"  class="btn btn-outline-info btn-sm">
+                <i class="fas fa-plus"></i> Agregar Orden  
+            </a>
+        </div>
+
+{% endblock %}
+
+
+              

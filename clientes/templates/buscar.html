@@ -1,0 +1,54 @@
+{% extends 'mainapp/index.html' %}
+
+{% block title %} Busqueda {% endblock %}
+
+{% block body %} 
+
+  {% load static %}
+
+  <h1 class="title">Clientes Encontrados</h1>
+
+  {% if messages %}
+    {%for message in messages %}
+      <div class="message">
+        {{message}}
+      </div>
+    {% endfor%}
+  {% endif %}
+
+
+
+
+  </br>
+  </br>
+  <div id="tabla-cliente">
+
+    <table>
+      <thead>
+        <tr>
+        <th> ID  </th> 
+        <th> NOMBRE  </th> 
+        <th> CELULAR  </th>  
+        <th> </th> 
+        </tr>
+      </thead>
+    
+
+          {% for cliente in clientes %}
+            <tr>
+              <td>{{cliente.id}}</td>
+              <td>{{cliente.nombre}}</td> 
+              <td>{{cliente.celular}}</td>
+              <td>
+                <a href="{% url 'cliente' cliente.id %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Ver</a>
+              </td>
+
+            </tr>
+          {%endfor%}
+
+      
+    </table>
+    
+  </div>
+
+{% endblock %}

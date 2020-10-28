@@ -1,0 +1,62 @@
+{% extends 'list.html' %}
+
+
+
+{% block nombre %}  
+
+    <h1> <small>Imei:</small> <class="m-0 text-dark"> {{orden.imei}} </h1>
+
+{% endblock %}
+
+{% block icon %}
+<i class="fas fa-book-medical"></i>
+{% endblock %}
+
+{% block add_orden %}
+                
+{% endblock%}
+    
+
+
+{% block rows %}
+
+   
+    <p><b><i>Id: </i></b> {{ orden.id }}</p>
+    <p><b><i>Modelo: </i></b> {{ orden.modelo}}</p>
+    <p><b><i>Contraseña: </i></b> {{ orden.contraseña}}</p>
+    <p><b><i>Accesorios: </i></b> {{ orden.accesorios }}</p>
+    <p><b><i>Observación: </i></b>{{ orden.observacion }}</p>
+    <p><b><i>Falla: </i></b>{{ orden.falla }}</p>   
+
+     <b><i>Estado: </i></b> 
+
+    {% if orden.estado == "Recibido" %}
+		<h5><span class="badge badge-primary">Recibido</span></h5>
+
+	    {% elif orden.estado == "En reparación" %}	
+        <h5><span class="badge badge-danger">En reparación</span></h5>		
+        
+        {% elif orden.estado == "Reparado" %}
+        <h5><span class="badge badge-warning">Reparado</span></h5>
+
+        {% elif orden.estado == "No Reparado" %}
+        <h5><span class="badge badge-dark">No reparado</span></h5>
+
+        {% elif orden.estado == "Entregado" %}
+        <h5><span class="badge badge-success">Entregado</span></h5>
+
+        {% elif orden.estado == "Garantía" %}
+        <h5><span class="badge badge-secondary">Garantia</span></h5>
+
+    {% endif %}
+
+    <p><b><i>¿Reparado?: </i></b>{{ orden.reparado}}</p>       
+    <p><b><i>Diagnostico: </i></b>{{ orden.diagnostico}}</p>
+    <p><b><i>Reparación: </i></b>{{ orden.reparacion}}</p>
+    <p><b><i>Entrada: </i></b>{{ orden.created_at }}</p>
+    <p><b><i>Salida: </i></b>{{ orden.fecha_out }}</p>      
+
+   
+
+
+{% endblock %}

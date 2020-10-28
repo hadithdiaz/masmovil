@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+
+
+   <h3>Ingreso al panel de Gestion</h3>
+
+    {% if messages %}
+      {% for message in messages %}
+         <div class="alert alert-warning">
+            {{message}}
+
+         </div>
+
+      {% endfor %}
+    {% endif %}
+
+  <form method="post" action="">
+      {% csrf_token %}
+
+      <aside id="lateral">
+
+         <h3>LOGIN</h3>
+         <div id="login" class="aside-box">
+            <form>
+
+               <label id="username" class="icon">U</label>
+               <input type="text" name="username"/>
+
+              <label id="password" class="icon">w</label>
+              <input type="password" name="password"/>     
+
+               <input type="submit" value="ENTRAR"/>
+            </form>
+         </div>
+
+      </aside>
+
+    </form>
+
+
+{% endblock %}
+
+
+                        <input type="email"/>
+
+                        <label id="password"class="icon">w</label>
+                        <input type="password"/>
+
+                        <input type="submit" value="Entrar"/>
+
+                   
+
+           
